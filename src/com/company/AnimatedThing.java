@@ -27,7 +27,7 @@ abstract public class AnimatedThing {
         //this.x = x;
         //this.y = y;
 //        this.sprite = sprite;
-        Image spriteSheet = new Image("C:\\Users\\MCNrm\\OneDrive\\Documents\\ensea\\2a1\\s7\\info\\images_projet\\heros.png");
+        Image spriteSheet = new Image(".\\heros.png");
         sprite = new ImageView(spriteSheet);
         sprite.setViewport(new Rectangle2D(this.index,0,75,100));
         sprite.setX(x);
@@ -52,6 +52,11 @@ abstract public class AnimatedThing {
             }
             delay = 0;
         } else delay++;
+    }
+    public void jump(){
+        int dy=0;
+        dy += 1;
+        getSprite().setY(dy);
     }
 
 

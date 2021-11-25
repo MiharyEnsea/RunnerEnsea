@@ -26,13 +26,7 @@ public class Main extends Application{
         GameScene gameScene = new GameScene(pane,600, 400);
         Image icon = new Image("C:\\Users\\MCNrm\\OneDrive\\Documents\\ensea\\2a1\\s7\\info\\images_projet\\logo.png");
 
-        gameScene.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event)-> {
-            System.out.println("Key pressed");
-            if (event.getCode() == KeyCode.SPACE) {
-                System.out.println("Space pressed");
-            }
-            event.consume();
-        });
+
 
         primaryStage.getIcons().add(icon);
         primaryStage.setResizable(true);
