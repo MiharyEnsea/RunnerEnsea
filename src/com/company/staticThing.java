@@ -28,9 +28,6 @@ public class staticThing {
         this.imageView.setX(this.xFond + ecart);
 
     }
-//    public void update2(long time){
-//        this.imageView.setX(this.xFond + GameScene.LARGEUR_BACKGROUND);
-//    }
 
     public ImageView getImageView() {
         return imageView;

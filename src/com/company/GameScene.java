@@ -17,10 +17,6 @@ import java.util.ArrayList;
 public class GameScene extends Scene {
     Camera camera;
     // Variables
-//    private Image imageBackground;
-//    private ImageView imageViewBackground;
-//
-//    static int xFond;
     private int numJump=0;
     static final int LARGEUR_BACKGROUND = 800;
 
@@ -28,11 +24,9 @@ public class GameScene extends Scene {
     // Constructeur
     public GameScene(Pane pane, double width, double height){
         super(pane, width, height, true);
-//        xFond = 0;
         staticThing backgroundLeft = new staticThing(".\\desert.png", 0,0);
         staticThing backgroundRight = new staticThing(".\\desert.png", 0 +this.LARGEUR_BACKGROUND,0); // 800 la largeur de l'image
-//        Image background = new Image("C:\\Users\\MCNrm\\OneDrive\\Documents\\ensea\\2a1\\s7\\info\\images_projet\\desert.png");
-//        ImageView backgroundView = new ImageView(background); test affichage
+
 
 
 
@@ -40,10 +34,14 @@ public class GameScene extends Scene {
         ArrayList<Foe> foes = new ArrayList<Foe>();
         Foe foe1 = new Foe(".\\flamme.jpg", 250,200);
         foes.add(foe1);
+        Foe foe2 = new Foe(".\\flamme.jpg", 550,200);
+        foes.add(foe2);
+        Foe foe3 = new Foe(".\\flamme.jpg", 750,200);
+        foes.add(foe3);
 
 
 
-//        pane.getChildren().add(backgroundView);
+
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long time) {
@@ -51,7 +49,8 @@ public class GameScene extends Scene {
                 backgroundLeft.update1(time, 0);
                 backgroundRight.update1(time,LARGEUR_BACKGROUND);
                 for(int i=0; i< foes.size();i++){
-                    foes.get(i).deplacement(time,0);
+                    foes.get(i).deplacement(time,450*i);
+                    foes.get(i).flammeAnim();
                     if(!hero.isInvincible()) {
                         if (hero.Rectangle2DgetHitBox(hero.getSprite(), foes.get(i).getImageView())) {
                             System.out.println("collision");
@@ -62,7 +61,7 @@ public class GameScene extends Scene {
                         hero.loseInvincible(time);
                     }
                 }
-                System.out.println(hero.getInvicibility());
+//                System.out.println(hero.getInvicibility());
 
             }
         };
@@ -78,24 +77,15 @@ public class GameScene extends Scene {
             event.consume();
         });
 
-//        this.addEventFilter(KeyEvent.KEY_RELEASED, (KeyEvent event)-> {
-//            System.out.println("Key released");
-//            if (event.getCode() == KeyCode.SPACE) {
-//                System.out.println("Space pressed");
-//                hero.setAttitude(1);
-//
-//            }
-//            event.consume();
-//        });
 
 
 
         pane.getChildren().add(backgroundLeft.getImageView());
         pane.getChildren().add(backgroundRight.getImageView());
         pane.getChildren().add(hero.getSprite());
-        pane.getChildren().add(foes.get(0).getImageView());
-
-        //root.getChildren().add(backgroundleft.getImageView());
+        for(int i=0; i< foes.size();i++) {
+            pane.getChildren().add(foes.get(i).getImageView());
+        }
     }
 
 

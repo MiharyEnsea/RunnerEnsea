@@ -11,10 +11,24 @@ public class Foe extends staticThing {
     }
 
     private int dx = 0;
+    private int index=1;
+    private int maxIndex=6;
+    private int delay = 0;
 
     public void deplacement(long time, int ecart) {
-        //if(this.xFond == -GameScene.LARGEUR_BACKGROUND) this.xFond =0;
+        if(this.dx == -2000) this.dx=0;
         this.dx -= 5;
         this.getImageView().setX(1000 +this.dx + ecart);
+    }
+
+    public void flammeAnim() {
+        if (delay == 5) {
+            if (index < maxIndex) {
+                index += 1;
+            } else index = 1;
+            this.getImageView().setViewport(new Rectangle2D(4* index * 50, 50, 90, 183));
+            delay=0;
+        }
+        delay++;
     }
 }

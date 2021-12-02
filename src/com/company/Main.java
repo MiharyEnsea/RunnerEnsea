@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application{
-//    private double pos = 0;
+
 
 
     public void start(Stage primaryStage) throws Exception{
@@ -26,7 +26,6 @@ public class Main extends Application{
         primaryStage.setTitle("Runner");
         Group root = new Group();
         Pane pane = new Pane(root);
-//        Scene scene = new Scene(root, 600, 400);
         GameScene gameScene = new GameScene(pane,600, 400);
         Image icon = new Image(".\\logo.png");
 

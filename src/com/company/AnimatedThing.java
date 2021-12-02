@@ -28,9 +28,6 @@ abstract public class AnimatedThing {
 
 
     public AnimatedThing(double x, double y, String fileName) {
-        //this.x = x;
-        //this.y = y;
-//        this.sprite = sprite;
         Image spriteSheet = new Image(fileName);
         sprite = new ImageView(spriteSheet);
         sprite.setViewport(new Rectangle2D(this.index,0,75,100));
@@ -72,28 +69,12 @@ abstract public class AnimatedThing {
 //        System.out.println(attitude);
     }
     public void jump(){
-//        int vy=200;
-//        while(this.y > 150){
-//            this.y -= vy;
-//        this.attitude = 2; //jump
-//        this.sprite.setViewport(new Rectangle2D(80, 160, 90, 100));
-//        this.sprite.setY(this.y);
-//        TranslateTransition translateTransition = new TranslateTransition();
-//        translateTransition.setDuration(Duration.millis(250));
-//        translateTransition.setNode(this.sprite);
-//        translateTransition.setByY(-100);
-////            translateTransition.setCycleCount(2);
-////            translateTransition.setAutoReverse(true);
-//        translateTransition.play();
         setAttitude(2);
 
 
 
         }
-//        else{
-//            this.y += vy*time;
-//            this.sprite.setY(this.y);
-//        }
+
 
     public boolean Rectangle2DgetHitBox(ImageView perso1, ImageView perso2){
         return perso1.getBoundsInParent().intersects(perso2.getBoundsInParent());
@@ -111,9 +92,6 @@ abstract public class AnimatedThing {
         return sprite;
     }
 
-    public Integer getAttitude() {
-        return attitude;
-    }
 
     public void setAttitude(Integer attitude) {
         this.attitude = attitude;
