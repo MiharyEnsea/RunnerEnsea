@@ -52,19 +52,26 @@ public class GameScene extends Scene {
                 backgroundRight.update1(time,LARGEUR_BACKGROUND);
                 for(int i=0; i< foes.size();i++){
                     foes.get(i).deplacement(time,0);
-                    if (hero.Rectangle2DgetHitBox(hero.getSprite(), foes.get(i).getImageView())){
-                        System.out.println("collision");
+                    if(!hero.isInvincible()) {
+                        if (hero.Rectangle2DgetHitBox(hero.getSprite(), foes.get(i).getImageView())) {
+                            System.out.println("collision");
+                            hero.setInvicibility(250000000);
+                        }
+                    }
+                    else{
+                        hero.loseInvincible(time);
                     }
                 }
+                System.out.println(hero.getInvicibility());
 
             }
         };
         timer.start();
 
         this.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event)-> {
-            System.out.println("Key pressed");
+//            System.out.println("Key pressed");
             if (event.getCode() == KeyCode.SPACE) {
-                System.out.println("Space pressed");
+//                System.out.println("Space pressed");
                 hero.jump();
 
             }

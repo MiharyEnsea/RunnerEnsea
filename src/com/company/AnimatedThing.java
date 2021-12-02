@@ -69,7 +69,7 @@ abstract public class AnimatedThing {
 
             delay = 0;
         } else delay++;
-        System.out.println(attitude);
+//        System.out.println(attitude);
     }
     public void jump(){
 //        int vy=200;
