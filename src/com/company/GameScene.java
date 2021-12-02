@@ -10,6 +10,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import javafx.scene.layout.Pane;
+import javafx.geometry.Rectangle2D;
+
+import java.util.ArrayList;
 
 public class GameScene extends Scene {
     Camera camera;
@@ -18,6 +21,7 @@ public class GameScene extends Scene {
 //    private ImageView imageViewBackground;
 //
 //    static int xFond;
+    private int numJump=0;
     static final int LARGEUR_BACKGROUND = 800;
 
 
@@ -32,7 +36,12 @@ public class GameScene extends Scene {
 
 
 
-        Hero hero = new Hero(100,0, ".\\heros.png" );
+        Hero hero = new Hero(100,0 , ".\\heros.png" );
+        ArrayList<Foe> foes = new ArrayList<Foe>();
+        Foe foe1 = new Foe(".\\flamme.jpg", 250,200);
+        foes.add(foe1);
+
+
 
 //        pane.getChildren().add(backgroundView);
         AnimationTimer timer = new AnimationTimer() {
@@ -41,31 +50,49 @@ public class GameScene extends Scene {
                 hero.update(time);
                 backgroundLeft.update1(time, 0);
                 backgroundRight.update1(time,LARGEUR_BACKGROUND);
-
+                for(int i=0; i< foes.size();i++){
+                    foes.get(i).deplacement(time,0);
+                    if (hero.Rectangle2DgetHitBox(hero.getSprite(), foes.get(i).getImageView())){
+                        System.out.println("collision");
+                    }
+                }
 
             }
         };
         timer.start();
+
         this.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event)-> {
             System.out.println("Key pressed");
             if (event.getCode() == KeyCode.SPACE) {
                 System.out.println("Space pressed");
                 hero.jump();
+
             }
             event.consume();
         });
+
+//        this.addEventFilter(KeyEvent.KEY_RELEASED, (KeyEvent event)-> {
+//            System.out.println("Key released");
+//            if (event.getCode() == KeyCode.SPACE) {
+//                System.out.println("Space pressed");
+//                hero.setAttitude(1);
+//
+//            }
+//            event.consume();
+//        });
+
 
 
         pane.getChildren().add(backgroundLeft.getImageView());
         pane.getChildren().add(backgroundRight.getImageView());
         pane.getChildren().add(hero.getSprite());
+        pane.getChildren().add(foes.get(0).getImageView());
 
         //root.getChildren().add(backgroundleft.getImageView());
     }
 
 
     // methodes
-
 
 
 

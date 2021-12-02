@@ -20,9 +20,7 @@ public class staticThing {
 
     }
 
-    public ImageView getImageView() {
-        return imageView;
-    }
+
 
     public void update1(long time, int ecart){
         if(this.xFond == -GameScene.LARGEUR_BACKGROUND) this.xFond =0;
@@ -34,4 +32,7 @@ public class staticThing {
 //        this.imageView.setX(this.xFond + GameScene.LARGEUR_BACKGROUND);
 //    }
 
+    public ImageView getImageView() {
+        return imageView;
+    }
 }

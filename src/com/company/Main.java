@@ -24,7 +24,7 @@ public class Main extends Application{
         Pane pane = new Pane(root);
 //        Scene scene = new Scene(root, 600, 400);
         GameScene gameScene = new GameScene(pane,600, 400);
-        Image icon = new Image("C:\\Users\\MCNrm\\OneDrive\\Documents\\ensea\\2a1\\s7\\info\\images_projet\\logo.png");
+        Image icon = new Image(".\\logo.png");
 
 
 
